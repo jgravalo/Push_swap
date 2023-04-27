@@ -1,1 +1,0 @@
-gcc -Wall -Werror -Wextra push_swap.c push_swap.h makestack.c instructions.c min_to_max.c order_5.c order_3.c order_n.c print_stack.c check_errors.c checker.c

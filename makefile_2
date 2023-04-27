@@ -1,0 +1,23 @@
+SRCS	= instructions.c makestack.c min_to_max.c print_stack.c check_errors.c order_3.c order_5.c order_n.c push_swap.c main.c
+
+OBJS	= $(SRCS:.c=.o)
+
+CC		= gcc
+
+CFLAGS	= -Wall -Werror -Wextra
+
+RM		= rm -f
+
+NAME	= push_swap
+
+all		= $(NAME)
+
+$(NAME) : $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+clean:
+		$(RM) $(OBJS)
+fclean:	clean
+		$(RM) $(NAME)
+re:		fclean $(NAME)
+.PHONY:	all clean fclean re

@@ -1,33 +1,45 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/18 16:53:48 by jgravalo          #+#    #+#              #
-#    Updated: 2022/10/19 17:53:54 by jgravalo         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS		= src/push_swap.c src/check_errors.c src/print_stack.c src/min_to_max.c src/makestack.c src/instructions.c src/order*
 
-SRCS            = main.c push_swap.c check_errors.c makestack.c \
-				  min_to_max.c instructions.c order_3.c order_5.c order_n.c \
-OBJS            = $(SRCS:.c=.o)
-BONUS_OBJS		= $(BONUS_FILES:.c=.o)
-CC              = gcc
-RM              = rm -f
-CFLAGS          = -Wall -Wextra -Werror
-NAME			= push_swap.a
-all:            $(NAME)
-$(NAME):        $(OBJS)
-				ar rcs $(NAME) $(OBJS)
-				ranlib ${NAME}
-bonus:			$(OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-				ranlib ${NAME}
-clean:			
-				$(RM) $(OBJS) $(BONUS_OBJS)
-fclean:			clean
-				$(RM) $(NAME)
-re:             fclean $(NAME)
-.PHONY:			all bonus clean fclean re
+MAIN		= src/main.c
+
+BONUS_SRCS	= bonus/checker.c gnl/*c
+
+OBJS		= $(SRCS:.c=.o)
+
+GNL_OBJS	= $(GNL:.c=.o)
+
+MAIN_OBJS	= $(MAIN:.c=.o)
+
+BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
+
+CC			= gcc
+
+CFLAGS		= -Wall -Werror -Wextra -MMD 
+
+LIB			= -Ignl
+
+RM			= rm -rf
+
+NAME		= push_swap
+
+BONUS_NAME	= checker_OS
+
+all:	$(NAME) $(BONUS_NAME)
+	
+bonus:	$(BONUS_NAME)
+
+$(NAME) : $(OBJS) $(MAIN_OBJS)
+		$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME)
+
+$(BONUS_NAME) : $(OBJS) $(BONUS_OBJS)
+		$(CC) $(CFLAGS) $(LIB) $(OBJS) $(BONUS_OBJS) -o $(BONUS_NAME)
+
+clean:
+		$(RM) $(OBJS) $(BONUS_OBJS) $(MAIN_OBJS)
+
+fclean:	clean
+		$(RM) $(NAME) $(BONUS_NAME)
+
+re:		fclean $(NAME) $(BONUS_NAME)
+
+.PHONY:	all bonus clean fclean re
