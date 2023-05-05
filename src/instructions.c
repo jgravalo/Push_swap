@@ -6,11 +6,21 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:46:59 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/04/21 19:05:37 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:42:24 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../inc/push_swap.h"
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 int	push(t_list *stack, t_list *stack_2)
 {

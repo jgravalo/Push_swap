@@ -1,1 +1,1 @@
-checker_OS: gnl/get_next_line_utils.c gnl/get_next_line.h
+checker_OS: src/order_n.c src/../inc/push_swap.h

@@ -80,42 +80,57 @@ void	first_push(t_list *stack, t_list *stack_2, int len)
 			if (n < 0)
 				while (j > n && --j)
 					if (reverse_rotate(stack) == 0)
-//						j--;// BORRAR !!!
-						write(1, "rra\n", 4);
-//						makemove(instructions, "rra\n");
+//						write(1, "rra\n", 4);
+						put_move(stack, "rra\n", 4);
 //						printf("j = %d\n", j);// BORRAR !!!
 			if (n > 0)
 				while (j < n && ++j)
 					if (rotate(stack) == 0)
-//						j++;// BORRAR !!!
-						write(1, "ra\n", 3);
-//						makemove(instructions, "ra\n");
+//						write(1, "ra\n", 3);
+						put_move(stack, "ra\n", 3);
 			if (push(stack, stack_2) == 0)
-				write(1, "pb\n", 3);
-//						makemove(instructions, "pb\n");
-			if (stacklen(stack_2) > 1 && i % 2 != 0)
+//			{
+//				write(1, "pb\n", 3);
+				put_move(stack, "pb\n", 3);
+//				printf("esta aqui\n");
+//			}
+//			if (stacklen(stack_2) > 1 && i % 2 != 0)
+			if (stacklen(stack_2) > 1 && i < len - 10)
 				if (rotate(stack_2) == 0)
-					write(1, "sb\n", 3);
-//						makemove(instructions, "sb\n");
+//					write(1, "rb\n", 3);
+					put_move(stack, "rb\n", 3);
 //			print_2stack(stack, stack_2);// BORRAR !!!
 		}
 		len += 20;
 	}
 }
-/*
-void	condition(t_list *stack, t_list *stack_2, int len)
+
+int		condition(t_list *stack, t_list *stack_2, int len, int n)
 {
-	if (stack_2->cabeza->pos == len - 1)
+	int	i;
+
+	i = 0;
+	if (stack_2->cabeza->pos == len - 2)
 	{
 		if (push(stack_2, stack) == 0)
-			write(1, "pa\n", 3);
-//						makemove(instructions, "sa\n");
-		if (swap(stack) == 0)
-			write(1, "sa\n", 3);
-//						makemove(instructions, "sa\n");
+//			write(1, "pa\n", 3);
+			put_move(stack, "pa\n", 3);
+//		if (swap(stack) == 0)
+//			write(1, "sa\n", 3);
+//			put_move(stack, "sa\n", 3);
+		i++;
 	}
+	if (n < 0)
+		if (reverse_rotate(stack_2) == 0)
+//			write(1, "rrb\n", 4);
+			put_move(stack, "rrb\n", 4);
+	if (n > 0)
+		if (rotate(stack_2) == 0)
+//			write(1, "rb\n", 3);
+			put_move(stack, "rb\n", 3);
+	return (i);
 }
-*/
+
 void	last_push(t_list *stack, t_list *stack_2, int len)
 {
 	
@@ -131,21 +146,24 @@ void	last_push(t_list *stack, t_list *stack_2, int len)
 			while (j - 1 >= n && --j)
 			{
 				if (reverse_rotate(stack_2) == 0)
-					write(1, "rrb\n", 4);
-//						makemove(instructions, "rrb\n");
-//				condition(stack, stack_2, len);
+//					write(1, "rrb\n", 4);
+//					put_move(stack, "rrb\n", 4);
+					len -= condition(stack, stack_2, len, -1);
 			}
 		if (n > 0)
 			while (j + 1 <= n && ++j)
 			{
+//				print_2stack(stack, stack_2);// BORRAR !!!
 				if (rotate(stack_2) == 0)
-					write(1, "rb\n", 3);
-//						makemove(instructions, "rb\n");
-//				condition(stack, stack_2, len);
+//					write(1, "rb\n", 3);
+//					put_move(stack, "rb\n", 3);
+//					put_move(stack, "j = rb\n", 7);
+					len -= condition(stack, stack_2, len, 1);
+//				print_2stack(stack, stack_2);// BORRAR !!!
 			}
 		if (push(stack_2, stack) == 0)
-			write(1, "pa\n", 3);
-//						makemove(instructions, "pa\n");
+//			write(1, "pa\n", 3);
+			put_move(stack, "pa\n", 3);
 //		print_2stack(stack, stack_2);// BORRAR !!!
 		len--;
 	}
@@ -155,11 +173,10 @@ void	order_n(t_list *stack, t_list *stack_2)
 {
 	int len;
 	
-//	print_2stack(stack, stack_2);// BORRAR !!!
+	print_2stack(stack, stack_2);// BORRAR !!!
 	len = 20;
 	first_push(stack, stack_2, len);
 	print_2stack(stack, stack_2);// BORRAR !!!
-	// hasta aqui funciona
 	len = stacklen(stack_2);
 	last_push(stack, stack_2, len);
 }

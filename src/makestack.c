@@ -6,38 +6,43 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:41:51 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/04/27 15:20:22 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:53:35 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../inc/push_swap.h"
 
-t_move	*join_move(char *move)
+t_move	*make_move(char *move, int len)
 {
-	t_move	new;
+	t_move	*new;
 
-	new = (t_move *)malloc(sizeof(char) * ft_strlen(move));
-	new.move = move;
-	new.next == NULL;
+	new = (t_move *)malloc(sizeof(t_move));
+	new->move = move;
+	new->len = len;
+	new->next = NULL;
+//	printf("move = %s(%d)\n", new->move, new->len);// BORRAR
 	return (new);
 }
 
-void	*makemove(t_move *instructions, char *move)
+void	put_move(t_list *lista, char *move, int len)
 {
 	t_move	*ptr;
+	t_move	*nodo;
 	
-	ptr = instructions;
-	if (instructions == NULL)
-		ptr->next = join_move(move);
+	ptr = lista->cadena;
+	nodo = make_move(move, len);
+	if (lista->cadena == NULL)
+		lista->cadena = make_move(move, len);
 	else
 	{
 		while (ptr->next != NULL)
 			ptr = ptr->next;
-		ptr->next = join_move(move);
+		ptr->next = nodo;
+//		printf("move = %s(%d)\n", ptr->next->move, ptr->next->len);// BORRAR
 	}
 }
 
-t_nodo	*makenodo(int num)
+t_nodo	*make_nodo(int num)
 {
 	t_nodo	*new;
 
@@ -47,13 +52,13 @@ t_nodo	*makenodo(int num)
 	return (new);
 }
 
-void	putnodo(t_list *lista, int num)
+void	put_nodo(t_list *lista, int num)
 {
 	t_nodo	*ptr;
 	t_nodo	*nodo;
 
 	ptr = lista->cabeza;
-	nodo = makenodo(num);
+	nodo = make_nodo(num);
 	if (lista->cabeza == NULL)
 		lista->cabeza = nodo;
 	else
@@ -74,7 +79,8 @@ void	makestack(t_list *lista, int argc, char **argv)
 	i = 1;
 	while (i <= argc - 1)
 	{
-		putnodo(lista, atoi(argv[i]));
+		put_nodo(lista, atoi(argv[i]));
 		i++;
 	}
+	position(lista);
 }
