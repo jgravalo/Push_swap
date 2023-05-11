@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:53:58 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/03 16:57:14 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:43:56 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_list
 }	t_list;
 
 int		check_errors(char **argv);
+
+char	**ft_split(char *s, char c);
 
 void	makestack(t_list *lista, int argc, char **argv);
 

@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:19:25 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/04/20 16:01:16 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:22:28 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,12 @@ int	check_num(char **argv, int i)
 	{
 		if (argv[i][j] < '0' || argv[i][j] > '9')
 		{
+			if (argv[i][j] == ' ')
+				return (2);
+			//
 			printf("argumento no numerico = ");// BORRAR !!!!
 			printf("%d\n", i);// BORRAR !!!!
+			//
 			return (-1);
 		}
 		j++;
@@ -84,11 +88,13 @@ int	check_rep(char **argv, int i)
 	{
 		if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 		{
+			/*
 			printf("argumento repetido\n");// BORRAR !!!!
 //			printf("%s\n", argv[i]);// BORRAR !!!!
 //			printf("%d\n", i);// BORRAR !!!!
 			printf("n = %s\n", argv[j]);// BORRAR !!!!
 			printf("pos = %d\n", j);// BORRAR !!!!
+			*/
 			return (-1);
 		}
 		j++;
@@ -107,7 +113,7 @@ int	check_errors(char **argv)
 			return (-1);
 		if (ft_atoill(argv[i]) > 2147483647 || ft_atoill(argv[i]) < -2147483648)
 		{
-			printf("argumento no int");// BORRAR !!!!
+//			printf("argumento muy grande");// BORRAR !!!!
 			return (-1);
 		}
 		if (check_rep(argv, i) != 0)
