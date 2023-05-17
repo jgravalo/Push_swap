@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:29:05 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/11 12:46:31 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/11 14:03:44 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int		words(char *s, char c)
 	}
 	return (j);
 }
+
 char	**ft_split(char *s, char c)
 {
 	int		i;
@@ -114,8 +115,9 @@ char	**ft_split(char *s, char c)
 	char	**res;
 
 	i = 0;
-	j = 0;
-	res = (char **) malloc((words(s, c) * (sizeof(char *))) + 8);
+	j = 1;
+	res = (char **) malloc((words(s, c) * (sizeof(char *))) + 16);
+
 	if (!res || !s)
 		return (0);
 	while (*s)

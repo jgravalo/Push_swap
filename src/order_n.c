@@ -1,8 +1,6 @@
 #include"../inc/push_swap.h"
 #include<string.h>
 
-char	*ft_itoa(int n);
-
 int	search_pos(t_list *stack, int range)
 {
 	t_nodo	*ptr;
@@ -83,21 +81,22 @@ void	first_push(t_list *stack, t_list *stack_2, int len)
 			if (n < 0)
 				while (j > n && --j)
 					if (reverse_rotate(stack) == 0)
-						{put_move(stack, "rra\n", 4); write(1, "rra\n", 4);}
+						{put_move(stack, "rra\n", 4); printf("rra\n");}
 //						printf("j = %d\n", j);// BORRAR !!!
 			if (n > 0)
 				while (j < n && ++j)
 					if (rotate(stack) == 0)
-						{put_move(stack, "ra\n", 3); write(1, "ra\n", 3);}
+						{put_move(stack, "ra\n", 3); printf("ra\n");}
 			if (push(stack, stack_2) == 0)
-					{put_move(stack, "pb\n", 3); write(1, "pb\n", 3);}
-			if (stacklen(stack_2) > 1 && i % 2 != 0)
-//			if (stacklen(stack_2) > 1 && i < len - 10)
+					{put_move(stack, "pb\n", 3); printf("pb\n");}
+//			if (stacklen(stack_2) > 1 && i % 2 != 0)
+			if (stacklen(stack_2) > 1 && stack_2->cabeza->pos < len - 10)
 				if (rotate(stack_2) == 0)
-					{put_move(stack, "rb\n", 3); write(1, "rb\n", 3);}
+					{put_move(stack, "rb\n", 3); printf("rb\n");}
 //			print_2stack(stack, stack_2);// BORRAR !!!
 		}
 		len += 20;
+//		printf("len = %d\n", len);
 	}
 }
 
@@ -109,17 +108,17 @@ int		condition(t_list *stack, t_list *stack_2, int len, int n)
 	if (stack_2->cabeza->pos == len - 1)
 	{
 		if (push(stack_2, stack) == 0)
-						{put_move(stack, "pa\n", 3); write(1, "pa\n", 3);}
-		if (swap(stack) == 0)
-				{put_move(stack, "sa\n", 3); write(1, "sa\n", 3);}
+						{put_move(stack, "pa\n", 3); printf("pa\n");}
+//		if (swap(stack) == 0)
+//				{put_move(stack, "sa\n", 3); printf("sa\n");}
 		i++;
 	}
 	if (n < 0)
 		if (reverse_rotate(stack_2) == 0)
-				{put_move(stack, "rrb\n", 4); write(1, "rrb\n", 4);}
+				{put_move(stack, "rrb\n", 4); printf("rrb\n");}
 	if (n > 0)
 		if (rotate(stack_2) == 0)
-					{put_move(stack, "rb\n", 3); write(1, "rb\n", 3);}
+					{put_move(stack, "rb\n", 3); printf("rb\n");}
 	return (i);
 }
 
@@ -132,41 +131,44 @@ void	last_push(t_list *stack, t_list *stack_2, int len)
 	while (stack_2->cabeza)
 	{
 		n = search_pos2(stack_2, len);
+//		printf("n = %d\n", n);
 		j = 0;
 		tmp = 0;
 		if (n < 0)
-			while (j - 1 >= n && --j)
+			while (j > n && --j)
 			{
-				/*
-				if (stack_2->cabeza->pos == len - 1 && tmp == 0 && ++tmp)// && --len)
+				//
+				if (stack_2->cabeza->pos == len - 1 && tmp == 0 && ++tmp)// && --j)
 					if (push(stack_2, stack) == 0)
-						{put_move(stack, "pa\n", 3); write(1, "pa\n", 3);}
-				*/
-				if (reverse_rotate(stack_2) == 0)
-				{put_move(stack, "rrb\n", 4); write(1, "rrb\n", 4);}
+						{put_move(stack, "pa\n", 3); printf("(%d-%d)pa\n", stack->cabeza->pos, len - 1);}
+				//
+				if (stack_2->cabeza->pos != len && reverse_rotate(stack_2) == 0)
+					{put_move(stack, "rrb\n", 4); printf("rrb\n");}
 //					len -= condition(stack, stack_2, len, -1);
 			}
 		if (n > 0)
-			while (j + 1 <= n && ++j)
+			while (j < n && ++j)
 			{
-				/*
-				if (stack_2->cabeza->pos == len - 1 && tmp == 0 && ++tmp)// && --len)
+				//
+				if (stack_2->cabeza->pos == len - 1 && tmp == 0 && ++tmp && ++j)
 					if (push(stack_2, stack) == 0)
-					{put_move(stack, "pa\n", 3); write(1, "pa\n", 3);}
-				*/
-				if (rotate(stack_2) == 0)
-					{put_move(stack, "rb\n", 3); write(1, "rb\n", 3);}
+					{put_move(stack, "pa\n", 3); printf("(%d-%d)pa\n", stack->cabeza->pos, len - 1);}
+				//
+				if (stack_2->cabeza->pos != len && rotate(stack_2) == 0)
+					{put_move(stack, "rb\n", 3); printf("rb\n");}
 //					len -= condition(stack, stack_2, len, 1);
 			}
 		if (push(stack_2, stack) == 0)
-			{put_move(stack, "pa\n", 3); write(1, "pa\n", 3);}
+			{put_move(stack, "pa\n", 3); printf("(%d-%d)pa\n", stack->cabeza->pos, len);}
 		//
-//		if (tmp == 1)
+		if (tmp == 1)
+			--len;
 		if (stacklen(stack) > 1 && stack->cabeza->pos > stack->cabeza->next->pos)
 			if (swap(stack) == 0)
-				{put_move(stack, "sa\n", 3); write(1, "sa\n", 3);}
+				{put_move(stack, "sa\n", 3); printf("sa\n");}
 		//
 //		print_2stack(stack, stack_2);// BORRAR !!!
+//		printf("len = %d\n", len);
 		len--;
 	}
 }
@@ -177,8 +179,12 @@ void	order_n(t_list *stack, t_list *stack_2)
 	
 	print_2stack(stack, stack_2);// BORRAR !!!
 	len = 20;
+	if (stacklen(stack) >= 500)
+		len = 60;
 	first_push(stack, stack_2, len);
+	//
 	print_2stack(stack, stack_2);// BORRAR !!!
 	len = stacklen(stack_2);
 	last_push(stack, stack_2, len);
+	//
 }

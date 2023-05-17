@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:19:25 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/10 19:22:28 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:37:48 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	check_num(char **argv, int i)
 				return (2);
 			//
 			printf("argumento no numerico = ");// BORRAR !!!!
+			printf("\"%c\"\n", argv[i][j]);// BORRAR !!!!
 			printf("%d\n", i);// BORRAR !!!!
 			//
 			return (-1);
@@ -109,7 +110,9 @@ int	check_errors(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		if (check_num(argv, i) != 0)
+		if (check_num(argv, i) == 2)
+			return (2);
+		else if (check_num(argv, i) != 0)
 			return (-1);
 		if (ft_atoill(argv[i]) > 2147483647 || ft_atoill(argv[i]) < -2147483648)
 		{

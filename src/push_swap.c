@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:50:46 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/11 13:12:17 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:11:07 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,16 @@ void	print_moves(t_move *move)
 	}
 }
 
-char	**get_arg(char **argv)
+char	**get_arg(int *argc, char **argv)
 {
 	char **arg;
 
+//	printf("argc = %d\n", *argc);
+	*argc = words(argv[1], ' ') + 1;
+//	printf("argc = %d\n", *argc);
+//	printf("\"%s\"\n", argv[1]);
 	arg = ft_split(argv[1], ' ');
+	arg[0] = argv[0];
 	return (arg);
 }
 
@@ -37,11 +42,16 @@ t_move	*push_swap(int argc, char **argv)
 {
 	t_list	*lista;
 	t_list	*lista_2;
+//	int i;
 
 	if (argc < 2)
 		return (0);
+//	for (i = 0; argv[i]; i++)
+//		printf("\"%s\"\n", argv[i]);
 	if (check_errors(argv) == 2)
-		argv = get_arg(argv);
+		argv = get_arg(&argc, argv);
+//	for (i = 0; argv[i]; i++)
+//		printf("\"%s\"\n", argv[i]);
 	if (check_errors(argv) == -1)
 	{
 		write(1, "Error\n", 6);
