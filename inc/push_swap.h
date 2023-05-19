@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:53:58 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/11 13:56:24 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:48:25 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_stack(t_list *stack);// BORRAR !!!!
 
 void	print_2stack(t_list *stack, t_list *stack_2);// BORRAR !!!!
 
-void    print_points(t_list *stack);// BORRAR !!!!
+void	print_points(t_list *stack);// BORRAR !!!!
 
 int		max_num(t_list *stack);
 
@@ -74,15 +74,15 @@ int		rotate(t_list *stack);
 
 int		reverse_rotate(t_list *stack);
 
-void    move(t_list *stack, int fin);
+void	move(t_list *stack, int fin);
 
-void    best_rotate(t_list *stack);
+void	best_rotate(t_list *stack);
 
-void    first_push(t_list *stack, t_list *stack_2, int len);
+void	first_push(t_list *stack, t_list *stack_2, int len, int ind);
 
-void    last_push(t_list *stack, t_list *stack_2, int len);
+void	last_push(t_list *stack, t_list *stack_2, int len);
 
-void	order_2(t_list *stack); // no se usa
+void	order_2(t_list *stack);
 
 void	order_3(t_list *stack, t_list *stack_2);
 

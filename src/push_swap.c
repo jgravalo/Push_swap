@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:50:46 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/17 18:11:07 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:33:17 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_move	*push_swap(int argc, char **argv)
 	else
 		order_n(lista, lista_2);
 //	printf("move head = %s(%d)\n", move->move, move->len);// BORRAR
-//	print_moves(lista->cadena);
+	print_moves(lista->cadena);
 	print_2stack(lista, lista_2);// BORRAR
 //	print_points(lista);// BORRAR
 //	print_points(lista_2);// BORRAR
