@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:53:58 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/19 17:48:25 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:13:42 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,19 @@ typedef struct s_list
 	t_move	*cadena;
 }	t_list;
 
+void	free_list_nodo(t_nodo *lst);
+
+void	free_list_move(t_move *lst);
+
+void	free_stack(t_list *lst);
+
 int		check_errors(char **argv);
 
 int		words(char *s, char c);
 
 char	**ft_split(char *s, char c);
+
+int		ft_strcmp(char *s1, char *s2);
 
 void	makestack(t_list *lista, int argc, char **argv);
 
@@ -77,6 +85,10 @@ int		reverse_rotate(t_list *stack);
 void	move(t_list *stack, int fin);
 
 void	best_rotate(t_list *stack);
+
+int		search_pos(t_list *stack, int range);
+
+int		search_pos2(t_list *stack, int range);
 
 void	first_push(t_list *stack, t_list *stack_2, int len, int ind);
 

@@ -6,21 +6,11 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:29:05 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/11 14:03:44 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:25:47 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-/*
-size_t	ft_strlen(char *str)
-{
-	unsigned long	count;
-
-	count = 0;
-	while (str[count] != '\0')
-		count++;
-	return (count);
-}
 
 int		ft_strcmp(char *s1, char *s2)
 {
@@ -33,7 +23,7 @@ int		ft_strcmp(char *s1, char *s2)
 	}
 	return (0);
 }
-*/
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new;
@@ -87,7 +77,7 @@ char	*ft_substr(char *s, int start, int len)
 	return (s2);
 }
 
-int		words(char *s, char c)
+int	words(char *s, char c)
 {
 	int	j;
 
@@ -117,7 +107,6 @@ char	**ft_split(char *s, char c)
 	i = 0;
 	j = 1;
 	res = (char **) malloc((words(s, c) * (sizeof(char *))) + 16);
-
 	if (!res || !s)
 		return (0);
 	while (*s)

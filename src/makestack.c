@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:41:51 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/11 14:45:56 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:39:49 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_move	*make_move(char *move, int len)
 	new->move = move;
 	new->len = len;
 	new->next = NULL;
-//	printf("move = %s(%d)\n", new->move, new->len);// BORRAR
 	return (new);
 }
 
@@ -28,7 +27,7 @@ void	put_move(t_list *lista, char *move, int len)
 {
 	t_move	*ptr;
 	t_move	*nodo;
-	
+
 	ptr = lista->cadena;
 	nodo = make_move(move, len);
 	if (lista->cadena == NULL)
@@ -38,7 +37,6 @@ void	put_move(t_list *lista, char *move, int len)
 		while (ptr->next != NULL)
 			ptr = ptr->next;
 		ptr->next = nodo;
-//		printf("move = %s(%d)\n", ptr->next->move, ptr->next->len);// BORRAR
 	}
 }
 

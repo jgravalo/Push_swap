@@ -1,4 +1,4 @@
-SRCS		= src/ft_itoa.c src/push_swap.c src/check_errors.c src/print_stack.c src/min_to_max.c src/makestack.c src/instructions.c src/utils.c src/order*
+SRCS		= src/push_swap.c src/check_errors.c src/print_stack.c src/min_to_max.c src/makestack.c src/instructions.c src/utils.c src/search_pos.c src/free_stack.c src/order*
 
 MAIN		= src/main.c
 
@@ -22,7 +22,7 @@ RM			= rm -rf
 
 NAME		= push_swap
 
-BONUS_NAME	= checker_OS
+BONUS_NAME	= checker
 
 all:	$(NAME) $(BONUS_NAME)
 	

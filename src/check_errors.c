@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 15:19:25 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/11 13:37:48 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:41:10 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,17 @@ int	check_num(char **argv, int i)
 
 	j = 0;
 	if (argv[i][j] == '-')
+	{
 		j++;
+		if (argv[i][j] < '0' || argv[i][j] > '9')
+			return (-1);
+	}
 	while (argv[i][j])
 	{
 		if (argv[i][j] < '0' || argv[i][j] > '9')
 		{
 			if (argv[i][j] == ' ')
-				return (2);
-			//
-			printf("argumento no numerico = ");// BORRAR !!!!
-			printf("\"%c\"\n", argv[i][j]);// BORRAR !!!!
-			printf("%d\n", i);// BORRAR !!!!
-			//
+				return (-1);
 			return (-1);
 		}
 		j++;
@@ -88,16 +87,7 @@ int	check_rep(char **argv, int i)
 	while (argv[j])
 	{
 		if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
-		{
-			/*
-			printf("argumento repetido\n");// BORRAR !!!!
-//			printf("%s\n", argv[i]);// BORRAR !!!!
-//			printf("%d\n", i);// BORRAR !!!!
-			printf("n = %s\n", argv[j]);// BORRAR !!!!
-			printf("pos = %d\n", j);// BORRAR !!!!
-			*/
 			return (-1);
-		}
 		j++;
 	}
 	return (0);
@@ -108,17 +98,14 @@ int	check_errors(char **argv)
 	int		i;
 
 	i = 1;
+	if (ft_strcmp(argv[1], "") == 0)
+		return (-1);
 	while (argv[i])
 	{
-		if (check_num(argv, i) == 2)
-			return (2);
-		else if (check_num(argv, i) != 0)
+		if (check_num(argv, i) != 0)
 			return (-1);
 		if (ft_atoill(argv[i]) > 2147483647 || ft_atoill(argv[i]) < -2147483648)
-		{
-//			printf("argumento muy grande");// BORRAR !!!!
 			return (-1);
-		}
 		if (check_rep(argv, i) != 0)
 			return (-1);
 		i++;
@@ -132,18 +119,3 @@ int	check_errors(char **argv)
 	}
 	return (1);
 }
-
-/*
-int main(int argc, char **argv)
-{
-
-    if (argc <= 1)
-        return (0);
-    if (check_errors(argv) == 0)
-	{
-		printf("OK!");
-        return (0);
-	}
-    printf("a ordenar");
-    return (0);
-}*/
