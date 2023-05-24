@@ -1,4 +1,4 @@
-SRCS		= src/push_swap.c src/check_errors.c src/min_to_max.c src/makestack.c src/instructions.c src/utils.c src/search_pos.c src/free_stack.c src/order*
+SRCS		= src/push_swap.c src/check_errors.c src/min_to_max.c src/makestack.c src/instructions.c src/utils.c src/search_pos.c src/free_stack.c src/order_3.c src/order_5.c src/order_n.c
 
 MAIN		= src/main.c
 
@@ -8,7 +8,7 @@ MAIN_OBJS	= $(MAIN:.c=.o)
 
 CC			= gcc
 
-CFLAGS		= -Wall -Werror -Wextra -MMD 
+CFLAGS		= -Wall -Werror -Wextra 
 
 RM			= rm -rf
 
