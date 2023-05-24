@@ -6,36 +6,13 @@
 /*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:50:46 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/20 19:42:19 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:59:52 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../inc/push_swap.h"
 
-/*
-char	**get_arg(int *argc, char **argv)
-{
-	char	**arg;
-
-	*argc = words(argv[1], ' ') + 1;
-	arg = ft_split(argv[1], ' ');
-	arg[0] = argv[0];
-	return (arg);
-}
-*/
-void	print_moves(t_move *move)
-{
-	t_move	*ptr;
-
-	ptr = move;
-	while (ptr != NULL)
-	{
-		write(1, ptr->move, ptr->len);
-		ptr = ptr->next;
-	}
-}
-
-t_move	*push_swap(int argc, char **argv)
+int	push_swap(int argc, char **argv)
 {
 	t_list	*lista;
 	t_list	*lista_2;
@@ -58,10 +35,7 @@ t_move	*push_swap(int argc, char **argv)
 		order_5(lista, lista_2);
 	else
 		order_n(lista, lista_2);
-	print_moves(lista->cadena);//	print_2stack(lista, lista_2);// BORRAR
-	//print_2stack(lista, lista_2);
 	free_stack(lista_2);
-	free_list_nodo(lista->cabeza);
-	free(lista);
-	return (lista->cadena);
+	free_stack(lista);
+	return (0);
 }

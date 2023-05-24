@@ -6,39 +6,11 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:41:51 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/19 20:39:49 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:01:05 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../inc/push_swap.h"
-
-t_move	*make_move(char *move, int len)
-{
-	t_move	*new;
-
-	new = (t_move *)malloc(sizeof(t_move));
-	new->move = move;
-	new->len = len;
-	new->next = NULL;
-	return (new);
-}
-
-void	put_move(t_list *lista, char *move, int len)
-{
-	t_move	*ptr;
-	t_move	*nodo;
-
-	ptr = lista->cadena;
-	nodo = make_move(move, len);
-	if (lista->cadena == NULL)
-		lista->cadena = make_move(move, len);
-	else
-	{
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = nodo;
-	}
-}
 
 t_nodo	*make_nodo(int num)
 {

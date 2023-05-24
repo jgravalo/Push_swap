@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:06:59 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/20 18:17:34 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:00:08 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	t_move	*p;
-	p = push_swap(argc, argv);
-	free_list_move(p);
+	push_swap(argc, argv);
 	return (0);
 }

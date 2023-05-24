@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/24 16:07:53 by jgravalo          #+#    #+#             */
+/*   Updated: 2023/05/24 16:08:09 by jgravalo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"../inc/push_swap.h"
 
 void	free_list_nodo(t_nodo *lst)
@@ -10,25 +22,12 @@ void	free_list_nodo(t_nodo *lst)
 		lst = ptr->next;
 		free(ptr);
 	}
-}
-
-void	free_list_move(t_move *lst)
-{
-	t_move	*ptr;
-
-	while (lst)
-	{
-		ptr = lst;
-		lst = ptr->next;
-		free(ptr);
-	}
+	free(lst);
 }
 
 void	free_stack(t_list *lst)
 {
 	if (lst->cabeza)
 		free_list_nodo(lst->cabeza);
-	if (lst->cadena)
-		free_list_move(lst->cadena);
 	free(lst);
 }

@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:27:20 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/19 18:05:31 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:58:08 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	move(t_list *stack, int fin)
 		while (i < fin && ++i)
 		{
 			if (rotate(stack) == 0)
-				put_move(stack, "ra\n", 3);
+				write(1, "ra\n", 3);
 		}
 	}
 	else
@@ -45,7 +45,7 @@ void	move(t_list *stack, int fin)
 		fin *= -1;
 		while (i < fin && ++i)
 			if (reverse_rotate(stack) == 0)
-				put_move(stack, "rra\n", 4);
+				write(1, "rra\n", 4);
 	}
 }
 
@@ -68,14 +68,14 @@ void	order_5(t_list *stack, t_list *stack_2)
 	{
 		best_rotate(stack);
 		if (push(stack, stack_2) == 0)
-			put_move(stack, "pb\n", 3);
+			write(1, "pb\n", 3);
 	}
 	order_3(stack, stack_2);
 	if (stacklen(stack_2) == 2
 		&& stack_2->cabeza->pos < stack_2->cabeza->next->pos)
 		if (swap(stack_2) == 0)
-			put_move(stack, "sb\n", 3);
+			write(1, "sb\n", 3);
 	while (stacklen(stack_2) >= 1)
 		if (push(stack_2, stack) == 0)
-			put_move(stack, "pa\n", 3);
+			write(1, "pa\n", 3);
 }
