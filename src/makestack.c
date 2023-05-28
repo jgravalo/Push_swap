@@ -6,7 +6,7 @@
 /*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:41:51 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/24 16:01:05 by jgravalo         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:30:10 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	makestack(t_list *lista, int argc, char **argv)
 	i = 1;
 	while (i <= argc - 1)
 	{
-		put_nodo(lista, atoi(argv[i]));
+		put_nodo(lista, ft_atoi(argv[i]));
 		i++;
 	}
 	position(lista);
