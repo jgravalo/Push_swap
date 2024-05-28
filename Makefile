@@ -33,7 +33,7 @@ bonus:		$(BONUS_OBJS) $(GNL_OBJS)
 		$(CC) $(CFLAGS) $(BONUS_OBJS) $(GNL_OBJS) -o checker
 
 clean:
-		$(RM) $(OBJS) $(MAIN_OBJS) $(BONUS_OBJS)
+		$(RM) $(OBJS) $(MAIN_OBJS) $(BONUS_OBJS) $(GNL_OBJS)
 
 fclean:	clean
 		$(RM) $(NAME) checker
