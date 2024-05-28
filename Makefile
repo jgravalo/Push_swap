@@ -2,9 +2,13 @@ SRCS		= src/push_swap.c src/check_errors.c src/min_to_max.c src/makestack.c src/
 
 MAIN		= src/main.c
 
+BONUS		= src/checker.c src/check_errors.c src/min_to_max.c src/makestack.c src/instructions.c 
+
 OBJS		= $(SRCS:.c=.o)
 
 MAIN_OBJS	= $(MAIN:.c=.o)
+
+BONUS_OBJS	= $(BONUS:.c=.o)
 
 CC			= gcc
 
@@ -20,6 +24,9 @@ all:	$(NAME)
 	
 $(NAME) : $(OBJS) $(MAIN_OBJS)
 		$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME)
+
+bonus:		$(BONUS_OBJS)
+		$(CC) $(CFLAGS) $(BONUS_OBJS) -o checker
 
 clean:
 		$(RM) $(OBJS) $(MAIN_OBJS)

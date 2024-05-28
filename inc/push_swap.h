@@ -34,6 +34,8 @@ void	free_list_nodo(t_nodo *lst);
 
 void	free_stack(t_list *lst);
 
+int		ft_atoi(char *str);
+
 int		check_errors(char **argv);
 
 int		ft_strcmp(char *s1, char *s2);
