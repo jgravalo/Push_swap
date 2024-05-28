@@ -2,13 +2,17 @@ SRCS		= src/push_swap.c src/check_errors.c src/min_to_max.c src/makestack.c src/
 
 MAIN		= src/main.c
 
-BONUS		= src/checker.c src/check_errors.c src/min_to_max.c src/makestack.c src/instructions.c 
+BONUS		= src/checker.c src/check_errors.c src/min_to_max.c src/makestack.c src/instructions.c src/utils.c
+
+GNL			= gnl/get_next_line.c gnl/get_next_line_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 
 MAIN_OBJS	= $(MAIN:.c=.o)
 
 BONUS_OBJS	= $(BONUS:.c=.o)
+
+GNL_OBJS	= $(GNL:.c=.o)
 
 CC			= gcc
 
@@ -25,14 +29,14 @@ all:	$(NAME)
 $(NAME) : $(OBJS) $(MAIN_OBJS)
 		$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME)
 
-bonus:		$(BONUS_OBJS)
-		$(CC) $(CFLAGS) $(BONUS_OBJS) -o checker
+bonus:		$(BONUS_OBJS) $(GNL_OBJS)
+		$(CC) $(CFLAGS) $(BONUS_OBJS) $(GNL_OBJS) -o checker
 
 clean:
-		$(RM) $(OBJS) $(MAIN_OBJS)
+		$(RM) $(OBJS) $(MAIN_OBJS) $(BONUS_OBJS)
 
 fclean:	clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) checker
 
 re:		fclean $(NAME)
 

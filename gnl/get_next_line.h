@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
+/*   By: jgravalo <jgravalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 17:09:13 by jgravalo          #+#    #+#             */
-/*   Updated: 2022/07/14 15:35:26 by jgravalo         ###   ########.fr       */
+/*   Updated: 2024/05/28 23:34:14 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+#endif
+
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-
-size_t			ft_strlen(char *str);
+# include "../inc/push_swap.h"
 
 char			*ft_strchr(char *text, int c);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: jgravalo <jgravalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:50:46 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/24 15:59:52 by jgravalo         ###   ########.fr       */
+/*   Updated: 2024/05/28 23:36:34 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	compare(t_list *stack, t_list *stack_2)
 
 	i = 0;
 	c = get_next_line(0);
-	while (c != NULL && c[0] != '\0')
+	while (c != NULL && c[0] != '\0' && c[0] != '\n')
 	{
 		do_move(stack, stack_2, c);
 		c = get_next_line(0);
@@ -69,15 +69,14 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		exit(-1);
 	}
-	if (check_errors(argv) == 1)
-		return (0);
 	stack = (t_list *)malloc(sizeof(t_list));
 	stack_2 = (t_list *)malloc(sizeof(t_list));
 	makestack(stack, argc, argv);
 	if (compare(stack, stack_2))
 	{
-		write(2, "Error\n", 6);
+		write(1, "KO\n", 6);
 		return (-1);
 	}
+	write(1, "OK\n", 6);
 	return (0);
 }
