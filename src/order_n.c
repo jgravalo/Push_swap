@@ -36,7 +36,7 @@ void	first_push(t_list *stack, t_list *stack_2, int len, int ind)
 				if (rotate(stack_2) == 0)
 					write(1, "rb\n", 3);
 		}
-		len += 20;
+		len += ind;
 	}
 }
 
@@ -112,7 +112,7 @@ void	order_n(t_list *stack, t_list *stack_2)
 	int	len;
 	int	ind;
 
-	len = 20;
+	len = 50;
 	ind = len;
 	first_push(stack, stack_2, len, ind);
 	len = stacklen(stack_2);
