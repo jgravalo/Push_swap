@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgravalo <jgravalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -29,7 +29,7 @@ void	do_move(t_list *stack, t_list *stack_2, char *move)
 	if (ft_strcmp(move, "rra\n") == 0 || ft_strcmp(move, "rrr\n") == 0)
 		reverse_rotate(stack);
 	if (ft_strcmp(move, "rrb\n") == 0 || ft_strcmp(move, "rrr\n") == 0)
-		reverse_rotate(stack);
+		reverse_rotate(stack_2);
 }
 
 int	compare(t_list *stack, t_list *stack_2)
@@ -38,7 +38,6 @@ int	compare(t_list *stack, t_list *stack_2)
 	int		i;
 	t_nodo	*ptr;
 
-	i = 0;
 	c = get_next_line(0);
 	while (c != NULL && c[0] != '\0' && c[0] != '\n')
 	{
@@ -48,14 +47,27 @@ int	compare(t_list *stack, t_list *stack_2)
 	}
 	free(c);
 	ptr = stack->head;
+	i = 0;
+	// while (ptr->next)
 	while (ptr)
 	{
 		if (i + 1 != ptr->pos)
+		// if (ptr->num > ptr->next->num)
+		{
+			// dprintf(2, "i = %d ; pos: %d ; \n", i + 1, ptr->pos);
+			dprintf(2, "i1 = %d ; i2: %d ; \n", ptr->num, ptr->next->num);
 			return (-1);
+		}
 		ptr = ptr->next;
 		i++;
 	}
 	return (0);
+}
+
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(-1);
 }
 
 int	main(int argc, char **argv)
@@ -66,13 +78,12 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (check_errors(argv) == -1)
-	{
-		write(2, "Error\n", 6);
-		exit(-1);
-	}
+		error();
 	stack = (t_list *)malloc(sizeof(t_list));
-	stack->head = NULL;
 	stack_2 = (t_list *)malloc(sizeof(t_list));
+	if (!stack || ! stack_2)
+		error();
+	stack->head = NULL;
 	stack_2->head = NULL;
 	makestack(stack, argc, argv);
 	if (compare(stack, stack_2))

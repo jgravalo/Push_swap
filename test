@@ -1,0 +1,6 @@
+ARG="`shuf -i 1-10000 -n 500 | tr "\n" " "` 4";
+echo $ARG;
+echo ok:
+./push_swap $ARG | ./checker_linux $ARG
+echo me:
+./push_swap $ARG | ./checker $ARG
