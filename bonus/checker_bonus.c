@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/checker.h"
+#include "../inc/checker_bonus.h"
 
 void	do_move(t_list *stack, t_list *stack_2, char *move)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/checker_bonus.h"
 
 t_nodo	*make_nodo(int num)
 {

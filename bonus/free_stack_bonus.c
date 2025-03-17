@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/checker_bonus.h"
 
 void	free_list_nodo(t_nodo *lst)
 {
