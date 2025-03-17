@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../inc/push_swap.h"
-#include<string.h>
+#include "../inc/push_swap.h"
+#include <string.h>
 
 int	search_pos(t_list *stack, int range)
 {
@@ -19,7 +19,7 @@ int	search_pos(t_list *stack, int range)
 	int		i;
 	int		first_e;
 
-	ptr = stack->cabeza;
+	ptr = stack->head;
 	i = 0;
 	while (ptr != NULL && ptr->pos > range && i < stacklen(stack) && ++i)
 		ptr = ptr->next;
@@ -34,7 +34,7 @@ int	search_pos2(t_list *stack, int range)
 	int		first_e;
 	int		last_e;
 
-	ptr = stack->cabeza;
+	ptr = stack->head;
 	i = 0;
 	while (ptr != NULL && ptr->pos != range && i < stacklen(stack) && ++i)
 		ptr = ptr->next;

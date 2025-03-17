@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgravalo <jgravalo@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: jgravalo <jgravalo@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 18:06:59 by jgravalo          #+#    #+#             */
-/*   Updated: 2023/05/24 16:00:08 by jgravalo         ###   ########.fr       */
+/*   Created: 2022/02/22 13:29:05 by jgravalo          #+#    #+#             */
+/*   Updated: 2023/05/24 16:08:47 by jgravalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../inc/push_swap.h"
+#include "../inc/push_swap.h"
 
-int	main(int argc, char **argv)
+int	ft_strcmp(char *s1, char *s2)
 {
-	push_swap(argc, argv);
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
 	return (0);
 }

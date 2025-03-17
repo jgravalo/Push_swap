@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../inc/push_swap.h"
-#include"../gnl/get_next_line.h"
+#include "../inc/checker.h"
 
 void	do_move(t_list *stack, t_list *stack_2, char *move)
 {
@@ -37,16 +36,18 @@ int	compare(t_list *stack, t_list *stack_2)
 {
 	char	*c;
 	int		i;
-	t_nodo		*ptr;
+	t_nodo	*ptr;
 
 	i = 0;
 	c = get_next_line(0);
 	while (c != NULL && c[0] != '\0' && c[0] != '\n')
 	{
 		do_move(stack, stack_2, c);
+		free(c);
 		c = get_next_line(0);
 	}
-	ptr = stack->cabeza;
+	free(c);
+	ptr = stack->head;
 	while (ptr)
 	{
 		if (i + 1 != ptr->pos)
@@ -70,13 +71,19 @@ int	main(int argc, char **argv)
 		exit(-1);
 	}
 	stack = (t_list *)malloc(sizeof(t_list));
+	stack->head = NULL;
 	stack_2 = (t_list *)malloc(sizeof(t_list));
+	stack_2->head = NULL;
 	makestack(stack, argc, argv);
 	if (compare(stack, stack_2))
 	{
-		write(1, "KO\n", 6);
+		free_stack(stack_2);
+		free_stack(stack);
+		write(1, "KO\n", 3);
 		return (-1);
 	}
-	write(1, "OK\n", 6);
+	write(1, "OK\n", 3);
+	free_stack(stack_2);
+	free_stack(stack);
 	return (0);
 }

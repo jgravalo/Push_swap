@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../inc/push_swap.h"
+#include "../inc/push_swap.h"
 
 void	order_2(t_list *stack)
 {
 	t_nodo	*ptr;
 
-	ptr = stack->cabeza;
+	ptr = stack->head;
 	if (ptr->pos > ptr->next->pos)
 	{
 		swap(stack);
@@ -37,7 +37,7 @@ void	instructions1(t_list *stack, t_list *stack_2, int i)
 		write(1, "ra\n", 3);
 		swap(stack);
 		if (stacklen(stack_2) == 2
-			&& stack_2->cabeza->pos < stack_2->cabeza->next->pos)
+			&& stack_2->head->pos < stack_2->head->next->pos)
 		{
 			swap(stack_2);
 			write(1, "ss\n", 3);
@@ -60,7 +60,7 @@ void	instructions2(t_list *stack, t_list *stack_2, int i)
 	{
 		swap(stack);
 		if (stacklen(stack_2) == 2
-			&& stack_2->cabeza->pos < stack_2->cabeza->next->pos)
+			&& stack_2->head->pos < stack_2->head->next->pos)
 		{
 			swap(stack_2);
 			write(1, "ss\n", 3);
@@ -78,7 +78,7 @@ void	instructions3(t_list *stack, t_list *stack_2, int i)
 		write(1, "ra\n", 3);
 		swap(stack);
 		if (stacklen(stack_2) == 2
-			&& stack_2->cabeza->pos < stack_2->cabeza->next->pos)
+			&& stack_2->head->pos < stack_2->head->next->pos)
 		{
 			swap(stack_2);
 			write(1, "ss\n", 3);
@@ -92,7 +92,7 @@ void	order_3(t_list *stack, t_list *stack_2)
 {
 	t_nodo	*ptr;
 
-	ptr = stack->cabeza;
+	ptr = stack->head;
 	if (ptr->next->pos > ptr->pos && ptr->next->pos > ptr->next->next->pos)
 	{
 		if (ptr->pos > ptr->next->next->pos)

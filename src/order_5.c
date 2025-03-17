@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../inc/push_swap.h"
+#include "../inc/push_swap.h"
 
 int	search_num(t_list *stack, int num)
 {
 	int		i;
 	t_nodo	*ptr;
 
-	ptr = stack->cabeza;
+	ptr = stack->head;
 	i = 0;
 	while (ptr && ptr->num != num)
 	{
@@ -72,7 +72,7 @@ void	order_5(t_list *stack, t_list *stack_2)
 	}
 	order_3(stack, stack_2);
 	if (stacklen(stack_2) == 2
-		&& stack_2->cabeza->pos < stack_2->cabeza->next->pos)
+		&& stack_2->head->pos < stack_2->head->next->pos)
 		if (swap(stack_2) == 0)
 			write(1, "sb\n", 3);
 	while (stacklen(stack_2) >= 1)

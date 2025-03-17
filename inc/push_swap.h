@@ -27,7 +27,7 @@ typedef struct s_nodo
 
 typedef struct s_list
 {
-	t_nodo	*cabeza;
+	t_nodo	*head;
 }	t_list;
 
 void	free_list_nodo(t_nodo *lst);
