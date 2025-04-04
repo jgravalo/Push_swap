@@ -113,6 +113,8 @@ void	order_n(t_list *stack, t_list *stack_2)
 	int	ind;
 
 	len = 50;
+	if (stacklen(stack) < 200)
+		len = 20;
 	ind = len;
 	first_push(stack, stack_2, len, ind);
 	len = stacklen(stack_2);
